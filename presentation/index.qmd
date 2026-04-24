@@ -13,6 +13,106 @@ format:
     footer: "Accelerating R Analytics Development with AI"
 ---
 
+## We Are Not Cowboys {.center}
+
+::: {.columns}
+
+::: {.column width="40%"}
+![](https://upload.wikimedia.org/wikipedia/commons/c/cc/Cowboy_Cartoon.svg){width=80%}
+:::
+
+::: {.column width="60%"}
+::: {.incremental}
+- No "just ask the AI and see what happens"
+- Structured, repeatable workflows with clear requirements
+- Professional rigour — PRDs, issues, a test suite, code review
+:::
+:::
+
+:::
+
+::: {.notes}
+Set the tone early. We're not just typing into ChatGPT and praying. This is a disciplined engineering approach that happens to use AI as a very capable assistant.
+:::
+
+---
+
+## Unstructured AI = Spaghetti Code {.center}
+
+::: {.columns}
+
+::: {.column width="55%"}
+**If you just prompt freely...**
+
+::: {.incremental}
+- AI optimises for the immediate answer, not your codebase
+- Inconsistent patterns, duplicated logic, no coherent architecture
+- Works for a demo but regressions appear quickly
+- "You're gonna have a bad time"
+:::
+:::
+
+::: {.column width="45%"}
+::: {.fragment}
+{{< video https://www.youtube.com/watch?v=6Ls5j5iz2eA width="100%" height="300px" >}}
+:::
+:::
+
+:::
+
+
+::: {.notes}
+This is the core tension. AI is incredibly capable but it is stateless and has no opinion about your long-term codebase. Without structure it will confidently produce code that works today and is a nightmare tomorrow. The rest of this talk is about how to provide that structure.
+:::
+
+---
+
+## Structure Your Prompts: A Concrete Example
+
+::: {.columns}
+
+::: {.column width="48%"}
+### ❌ Not This
+
+> *"Make me an app to do XYZ."*
+
+:::
+
+::: {.column width="4%"}
+:::
+
+::: {.column width="48%"}
+### ✅ This
+
+> *"Make me an app to do XYZ. Use R Shiny.  
+I prefer tidyverse dialect and the base pipe.  
+Implement code using test-driven red-green refactoring.  
+Use the testthat test suite and cover all edge cases.  
+Don't bother testing the UI."*
+
+:::
+
+:::
+
+You need to have opinions and to know what you want. AI builds quickly. It creates more time to spend **upfront** on specification.  
+
+::: {.notes}
+This is the single most important practical takeaway. The constraint isn't limiting the AI — it's giving it enough context to behave like a consistent team member rather than a different developer every time. You'd give the same brief to a human contractor joining your project.
+:::
+
+## Know what you want
+
+::: {.fragment}
+No quality bar — what does "done" mean?
+AI will pick defaults - make sure they align to your preferences.
+:::
+
+Build incrementally.  Start with foundations and minimal functionality.  
+
+For example for some projects my intial prompts have been setting up a {golem} framework (a set of conventions to product production-ready R shiny apps).  Later layering on features.
+
+---
+
 ## Who Is This For? {.center}
 
 ::: {.incremental}
