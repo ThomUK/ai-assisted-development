@@ -1,0 +1,85 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Inter+Tight:wght@600;700&display=swap');
+
+:root {
+  --r-background-color: #ffffff;
+  --r-main-font: 'Inter', sans-serif;
+  --r-heading-font: 'Inter Tight', sans-serif;
+  --r-main-color: #1a1a2e;
+  --r-heading-color: #1a1a2e;
+  --r-link-color: #4a6fa5;
+  --r-link-color-hover: #2d4a7a;
+  --r-selection-background-color: #4a6fa540;
+  --r-main-font-size: 32px;
+}
+
+.reveal .slides {
+  text-align: left;
+}
+
+.reveal h1,
+.reveal h2,
+.reveal h3 {
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  text-transform: none;
+}
+
+.reveal h2 {
+  font-size: 1.6em;
+  border-bottom: 3px solid #4a6fa5;
+  padding-bottom: 0.2em;
+  margin-bottom: 0.6em;
+}
+
+.reveal .title-slide h1 {
+  font-size: 2em;
+  border: none;
+}
+
+.reveal .title-slide .subtitle {
+  color: #4a6fa5;
+  font-weight: 400;
+  font-size: 1.1em;
+}
+
+.reveal ul,
+.reveal ol {
+  line-height: 1.7;
+}
+
+.reveal li {
+  margin-bottom: 0.3em;
+}
+
+.reveal blockquote {
+  border-left: 4px solid #4a6fa5;
+  padding-left: 1em;
+  color: #444;
+  font-style: italic;
+  background: #f8f9fc;
+  border-radius: 0 6px 6px 0;
+  padding: 0.8em 1em;
+  font-size: 0.9em;
+}
+
+.reveal .footer {
+  font-size: 0.5em;
+  color: #aaa;
+}
+
+.reveal .slide-number {
+  font-family: 'Inter', sans-serif;
+  color: #aaa;
+}
+
+.workflow-steps {
+  background: #f8f9fc;
+  border-radius: 8px;
+  padding: 1.2em 1.6em;
+  border-left: 4px solid #4a6fa5;
+}
+
+strong {
+  color: #1a1a2e;
+  font-weight: 600;
+}

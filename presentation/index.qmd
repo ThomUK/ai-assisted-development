@@ -1,0 +1,254 @@
+---
+title: "Accelerating R Analytics Development with AI"
+subtitle: "Practical workflows using Claude and Claude Code"
+author: "Tom Smith"
+format:
+  revealjs:
+    theme: simple
+    transition: fade
+    slide-number: true
+    chalkboard: false
+    preview-links: auto
+    css: styles.css
+    footer: "Accelerating R Analytics Development with AI"
+---
+
+## Who Is This For? {.center}
+
+::: {.incremental}
+- Non-technical stakeholders curious about AI's impact on analytics
+- R developers looking to adopt AI-assisted workflows
+- Teams managing analytics projects at scale
+:::
+
+::: {.notes}
+Frame this early — the presentation works on two levels. Non-technical folks will get the "what's possible" picture; developers will leave with enough to get started themselves.
+:::
+
+---
+
+## The High-Level Workflow
+
+```{=html}
+<div class="workflow-steps">
+```
+
+1. Write a **PRD** (Product Requirements Document) with Claude
+2. Break the PRD into **GitHub Issues**
+3. Implement iteratively using **Claude Code**
+4. Review, sign off, and close issues
+
+```{=html}
+</div>
+```
+
+::: {.notes}
+This is the spine of everything. Each section of the talk maps onto one of these steps. Keep it high level here — we'll unpack each part as we go.
+:::
+
+---
+
+## Prompt Engineering — Why It Matters
+
+::: {.incremental}
+- How you ask is as important as what you ask
+- Vague prompts produce vague, unpredictable results
+- Structured prompts give you consistent, repeatable outputs
+- Particularly important in long-running analytics projects where requirements evolve
+:::
+
+::: {.notes}
+This is the mindset shift. Think of prompting less like typing a search query and more like briefing a capable colleague — context, constraints, and expected output all matter.
+:::
+
+---
+
+## Prompt Engineering — Techniques & Resources
+
+::: columns
+::: {.column width="50%"}
+**Skills-based prompting**
+
+Matt Pocock's approach: reusable, named prompt patterns for recurring tasks
+
+- `/grill-me` — Claude interrogates your idea before you build
+- `/write-a-prd` — structured requirements before a line of code
+- `/prd-to-issues` — PRD broken into actionable GitHub issues
+:::
+
+::: {.column width="50%"}
+**Why this works**
+
+- Reduces ambiguity at the start
+- Catches gaps before they become bugs
+- Creates an audit trail of decisions
+- Non-technical stakeholders can review and contribute
+:::
+:::
+
+::: {.notes}
+Matt Pocock has been developing a set of Claude Code skills that operationalise good prompting habits. Worth pointing the developers in the audience to his work directly.
+:::
+
+---
+
+## Case Study — Planning the To-Do App
+
+*We'll build this live — here's the process we'll follow*
+
+::: {.incremental}
+- Start with `/grill-me` — Claude interrogates the requirements
+- Use `/write-a-prd` — capture what we're building and why
+- Run `/prd-to-issues` — PRD becomes a set of GitHub Issues
+- Each issue is a self-contained unit of work with a clear definition of done
+:::
+
+::: {.notes}
+The live demo picks up from here. This slide sets up what the audience is about to watch — frame it as showing the plan before executing it.
+:::
+
+---
+
+## Case Study — Building & Iterating
+
+*Live coding — Claude Code takes the issues one at a time*
+
+::: {.incremental}
+- Hand each GitHub issue to Claude Code individually
+- Claude reads the issue, writes the code, runs checks
+- Review the output before closing the issue
+- Course-correct mid-build when needed — that's expected, not a failure
+:::
+
+::: {.notes}
+Emphasise that this is a collaboration, not automation. Claude does the heavy lifting but the developer is steering throughout.
+:::
+
+---
+
+## Ralph Loops — Autonomous Iteration
+
+> "An infinite loop that repeatedly feeds the same prompt to an AI coding agent — until the work is done."
+> — Geoffrey Huntley, [ghuntley.com/loop](https://ghuntley.com/loop/)
+
+::: {.incremental}
+- Each iteration starts with **fresh context** — no memory of previous runs
+- Progress lives in **your files and git history**, not the LLM
+- Only works well with feedback loops: type checks, tests, CI
+- After each run, learnings are written back to `AGENTS.md`
+:::
+
+::: {.notes}
+Named after Ralph Wiggum — stumbles forward with naive confidence. That's a feature, not a bug. The key insight is that state lives in your repo, not the model.
+:::
+
+---
+
+## Managing Context & Memory
+
+::: {.incremental}
+- Every Claude conversation has a **context window** — a limit on what it can hold in mind at once
+- Long sessions drift: early decisions get forgotten
+- Strategies:
+  - Keep sessions focused on one issue at a time
+  - Use `CLAUDE.md` for persistent project-level memory
+  - Reset the conversation when switching tasks
+  - Summarise and carry forward only what's needed
+:::
+
+::: {.notes}
+This is where many people hit their first wall. Explain context window simply — "imagine Claude can only read the last N pages of a book at any time." CLAUDE.md is the fix for project conventions and preferences.
+:::
+
+---
+
+## GitHub Issues as Memory Store
+
+::: {.incremental}
+- GitHub Issues act as **persistent state** across sessions
+- Structure issues so Claude can pick up where it left off
+  - Clear title and acceptance criteria
+  - Links back to the PRD
+  - Comments capturing decisions made mid-build
+- When you start a new session, point Claude at the open issue
+- Nothing is lost between conversations
+:::
+
+::: {.notes}
+This is the practical answer to the context window problem. The issue IS the brief. Every new Claude session gets the same starting point.
+:::
+
+---
+
+## GitHub Issues as Quality Sign-Off
+
+::: {.incremental}
+- Issues double as a **review and approval workflow**
+- Non-technical stakeholders can read, comment, and approve
+- Closing an issue = definition of done
+- Builds an audit trail: what was built, when, and why
+- Particularly useful in regulated or team environments
+:::
+
+::: {.notes}
+This is the slide that lands with non-technical stakeholders. They get to participate meaningfully without touching code. Frame it as making quality everyone's job.
+:::
+
+---
+
+## Limitations — When Claude Isn't the Right Tool
+
+::: {.incremental}
+- **Real-time or streaming data** — Claude doesn't connect to live sources
+- **Highly specialised domain knowledge** — deep actuarial, clinical, or legal domain nuance still needs a human expert
+- **Complex statistical methodology** — Claude can implement a method, but choosing the right one is yours
+- **Ambiguous or shifting requirements** — garbage in, garbage out; structure the problem first
+- **Sensitive or confidential data** — know your organisation's data policy before sharing context with any AI
+:::
+
+::: {.notes}
+Being honest here builds trust with both audiences. Developers will appreciate the nuance; stakeholders will feel reassured that humans are still in the loop where it counts.
+:::
+
+---
+
+## Cost Considerations
+
+::: {.incremental}
+- Claude charges by **tokens** — roughly, words in and words out
+- Context window usage is the biggest cost driver
+- Ways to manage cost:
+  - Keep sessions focused (shorter context = fewer tokens)
+  - Use Claude Code's subscription for regular development work
+  - Reserve API calls for automated or high-volume tasks
+- Frame it as **time saved vs. cost**: even at full price, an hour of Claude is cheaper than an hour of developer time
+:::
+
+::: {.notes}
+Don't be coy about the fact that this costs money. But do frame the ROI clearly — the question isn't "does this cost anything?" it's "does it cost less than the alternative?"
+:::
+
+---
+
+## Getting Started
+
+**What you need**
+
+- R and RStudio (or VS Code)
+- A Claude Code subscription
+- A GitHub account
+
+**Recommended first steps**
+
+1. Install Claude Code
+2. Try `/grill-me` on your next project idea
+3. Write a PRD before writing any code
+4. Open your first GitHub Issue and hand it to Claude Code
+
+::: {.fragment}
+*The best way to learn this is to build something real.*
+:::
+
+::: {.notes}
+End on action. Give the developers in the room something concrete to do this week. Non-technical folks leave knowing what to ask their teams about.
+:::
